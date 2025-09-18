@@ -3,9 +3,9 @@ require "language/node"
 class DevTools < Formula
   desc "Builder.io Visual CMS Devtools - Setup and integrate Builder.io Visual CMS during development"
   homepage "https://www.builder.io/"
-  url "https://registry.npmjs.org/@builder.io/dev-tools/-/dev-tools-1.11.43.tgz"
-  version "1.11.43"
-  sha256 "6c379c629864aeaeed17fc120243415dbfe20f89a8f15e04c71181da455b4e7a"
+  url "https://registry.npmjs.org/@builder.io/dev-tools/-/dev-tools-1.11.44.tgz"
+  version "1.11.44"
+  sha256 "d7783ca82b1ce948c64a601a7eba8245ce8171d8ee6dfcdde99c2aa03574c0de"
 
   license "MIT"
 
