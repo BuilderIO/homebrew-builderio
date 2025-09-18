@@ -2,14 +2,14 @@
 
 ## How do I install these formulae?
 
-`brew install builder.io/dev-tools/<formula>`
+`brew install builderio/dev-tools/<formula>`
 
-Or `brew tap builder.io/dev-tools` and then `brew install <formula>`.
+Or `brew tap builderio/builderio` and then `brew install dev-tools`.
 
 Or, in a `brew bundle` `Brewfile`:
 
 ```ruby
-tap "builder.io/dev-tools"
+tap "builderio/dev-tools"
 brew "<formula>"
 ```
 
