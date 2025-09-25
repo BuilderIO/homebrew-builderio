@@ -4,7 +4,6 @@ class DevTools < Formula
   desc "Builder.io AI Powered Design to Code"
   homepage "https://www.builder.io/"
   url "https://registry.npmjs.org/@builder.io/dev-tools/-/dev-tools-1.11.44.tgz"
-  version "1.11.44"
   sha256 "d7783ca82b1ce948c64a601a7eba8245ce8171d8ee6dfcdde99c2aa03574c0de"
 
   license "MIT"

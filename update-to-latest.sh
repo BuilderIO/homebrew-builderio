@@ -10,7 +10,7 @@ CURRENT_VERSION=$(grep 'version "' "${FORMULA_FILE}" | cut -d'"' -f2)
 LATEST_VERSION=$(curl -s "https://registry.npmjs.org/@builder.io/dev-tools" | jq -r '.["dist-tags"].latest')
 
 if [[ "${CURRENT_VERSION}" = "${LATEST_VERSION}" ]]; then
-    echo "Already up to date with version $LATEST_VERSION"
+    echo "Already up to date with version ${LATEST_VERSION}"
     exit 0
 fi
 
@@ -19,9 +19,7 @@ echo "Updating from ${CURRENT_VERSION} to ${LATEST_VERSION}..."
 PACKAGE_URL="https://registry.npmjs.org/@builder.io/dev-tools/-/dev-tools-${LATEST_VERSION}.tgz"
 TEMP_FILE="builder-dev-tools-${LATEST_VERSION}.tgz"
 
-curl -L -o "${TEMP_FILE}" "${PACKAGE_URL}"
-
-if [[ $? -ne 0 ]]; then
+if ! curl -L -o "${TEMP_FILE}" "${PACKAGE_URL}"; then
     echo "Failed to download package"
     exit 1
 fi
