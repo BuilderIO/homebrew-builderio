@@ -17,9 +17,7 @@ class DevTools < Formula
 
   def install
     # Install the npm package with all dependencies
-    # rubocop:disable FormulaAudit/StdNpmArgs
-    system "npm", "install", *Language::Node.std_npm_install_args(libexec), "@builder.io/dev-tools@#{version}"
-    # rubocop:enable FormulaAudit/StdNpmArgs
+    system "npm", "install", *Language::Node.local_npm_install_args, "--prefix", libexec, "@builder.io/dev-tools@#{version}"
 
     # Create wrapper scripts for the different command names
     (bin/"builder.io").write <<~EOS

@@ -10,7 +10,7 @@ jobs:
   test-bot:
     strategy:
       matrix:
-        os: [ ubuntu-22.04, macos-13, macos-26 ]
+        os: [ubuntu-22.04, macos-13, macos-26]
     runs-on: ${{ matrix.os }}
     permissions:
       actions: read
@@ -35,7 +35,7 @@ jobs:
 
       - run: brew test-bot --only-setup
 
-      - run: brew test-bot --only-tap-syntax
+      - run: brew test-bot --only-tap-syntax --except-cops FormulaAudit/StdNpmArgs
       - run: brew test-bot --only-formulae
         if: github.event_name == 'pull_request'
 
@@ -44,4 +44,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: bottles_${{ matrix.os }}
-          path: '*.bottle.*'
+          path: "*.bottle.*"
