@@ -22,11 +22,27 @@ class DevTools < Formula
     # Create wrapper scripts for the different command names
     (bin/"builder.io").write <<~EOS
       #!/bin/bash
+      # Check for updates using brew-update.sh
+      if command -v brew >/dev/null 2>&1; then
+        # Find the brew-update.sh script in the tap directory
+        TAP_DIR="$(brew --prefix)/Library/Taps/builderio/homebrew-builderio"
+        if [[ -f "$TAP_DIR/brew-update.sh" ]]; then
+          "$TAP_DIR/brew-update.sh"
+        fi
+      fi
       exec "#{libexec}/lib/node_modules/@builder.io/dev-tools/cli/main.cjs" "$@"
     EOS
 
     (bin/"builderio").write <<~EOS
       #!/bin/bash
+      # Check for updates using brew-update.sh
+      if command -v brew >/dev/null 2>&1; then
+        # Find the brew-update.sh script in the tap directory
+        TAP_DIR="$(brew --prefix)/Library/Taps/builderio/homebrew-builderio"
+        if [[ -f "$TAP_DIR/brew-update.sh" ]]; then
+          "$TAP_DIR/brew-update.sh"
+        fi
+      fi
       exec "#{libexec}/lib/node_modules/@builder.io/dev-tools/cli/main.cjs" "$@"
     EOS
 
