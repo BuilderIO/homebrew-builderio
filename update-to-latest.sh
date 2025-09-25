@@ -2,10 +2,10 @@
 
 # Script to automatically update dev-tools formula to the latest npm version
 
-set -euo pipefail
+set -euox pipefail
 
 FORMULA_FILE="Formula/dev-tools.rb"
-CURRENT_VERSION=$(grep 'version "' "${FORMULA_FILE}" | cut -d'"' -f2)
+CURRENT_VERSION=$(grep 'url.*dev-tools-' "${FORMULA_FILE}" | sed 's/.*dev-tools-\([0-9.]*\)\.tgz.*/\1/')
 
 LATEST_VERSION=$(curl -s "https://registry.npmjs.org/@builder.io/dev-tools" | jq -r '.["dist-tags"].latest')
 
@@ -30,6 +30,6 @@ NEW_SHA256=$(shasum -a 256 "${TEMP_FILE}" | cut -d' ' -f1)
 
 rm "${TEMP_FILE}"
 
-sed -i '' "s/version \"${CURRENT_VERSION}\"/version \"${LATEST_VERSION}\"/" "${FORMULA_FILE}"
-sed -i '' "s/dev-tools-${CURRENT_VERSION}.tgz/dev-tools-${LATEST_VERSION}.tgz/" "${FORMULA_FILE}"
-sed -i '' "s/sha256 \".*\"/sha256 \"${NEW_SHA256}\"/" "${FORMULA_FILE}"
+sed -i.bak "s/dev-tools-${CURRENT_VERSION}.tgz/dev-tools-${LATEST_VERSION}.tgz/" "${FORMULA_FILE}"
+sed -i.bak "s/sha256 \".*\"/sha256 \"${NEW_SHA256}\"/" "${FORMULA_FILE}"
+rm -f "${FORMULA_FILE}.bak"
