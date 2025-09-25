@@ -17,7 +17,7 @@ class DevTools < Formula
 
   def install
     # Install the npm package with all dependencies
-    system "npm", "install", *Language::Node.std_npm_args(libexec), "@builder.io/dev-tools@#{version}"
+    system "npm", "install", *Language::Node.std_npm_install_args(libexec), "@builder.io/dev-tools@#{version}"
 
     # Create wrapper scripts for the different command names
     (bin/"builder.io").write <<~EOS
