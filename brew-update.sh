@@ -15,7 +15,7 @@ then
     if [[ "$VERBOSE" == true ]]
     then
       MTIME_DATE=$(date -r "$MTIME")
-      echo "Skipping check, last checked ${MTIME_DATE} ago"
+      echo "Skipping check, last checked ${MTIME_DATE}"
     fi
     exit 0
   fi
