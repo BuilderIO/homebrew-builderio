@@ -37,7 +37,7 @@ fi
 # Check if the latest version is different from the current version
 if [[ "$LATEST_VERSION" != "$CURRENT_VERSION" ]]
 then
-  brew upgrade dev-tools
+  brew upgrade dev-tools >/dev/null 2>&1
 fi
 
 touch "${TMPDIR}"/dev-tools-livecheck
