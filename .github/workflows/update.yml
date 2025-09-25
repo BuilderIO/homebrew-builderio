@@ -1,0 +1,39 @@
+name: Simple auto-update
+
+on:
+  schedule:
+    - cron: "0 */6 * * *" # Every 6 hours
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run update script
+        run: |
+          # Make script executable and run it
+          chmod +x update-to-latest.sh
+          chmod +x calculate-sha256.sh
+
+          # Run the script
+          ./update-to-latest.sh
+
+      - name: Check for changes and commit
+        run: |
+          if git diff --quiet; then
+            echo "No changes to commit"
+          else
+            echo "Changes detected, committing..."
+            git config --local user.email "action@github.com"
+            git config --local user.name "GitHub Action"
+            git add Formula/dev-tools.rb
+            git commit -m "Auto-update dev-tools formula"
+            git push
+            echo "Changes committed and pushed!"
+          fi
