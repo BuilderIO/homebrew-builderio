@@ -30,7 +30,7 @@ class DevTools < Formula
           "$TAP_DIR/brew-update.sh"
         fi
       fi
-      exec "#{libexec}/lib/node_modules/@builder.io/dev-tools/cli/main.cjs" "$@"
+      exec "#{libexec}/node_modules/@builder.io/dev-tools/cli/main.cjs" "$@"
     EOS
 
     (bin/"builderio").write <<~EOS
@@ -43,7 +43,7 @@ class DevTools < Formula
           "$TAP_DIR/brew-update.sh"
         fi
       fi
-      exec "#{libexec}/lib/node_modules/@builder.io/dev-tools/cli/main.cjs" "$@"
+      exec "#{libexec}/node_modules/@builder.io/dev-tools/cli/main.cjs" "$@"
     EOS
 
     chmod 0755, bin/"builder.io"
