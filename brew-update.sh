@@ -21,7 +21,7 @@ then
   fi
 fi
 
-OUTPUT=$(brew livecheck dev-tools)
+OUTPUT=$(brew livecheck dev-tools 2>/dev/null)
 
 # Check the output for the latest version
 LATEST_VERSION=$(echo "$OUTPUT" | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -n 1)
