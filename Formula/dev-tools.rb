@@ -3,8 +3,8 @@ require "language/node"
 class DevTools < Formula
   desc "Builder.io AI Powered Design to Code"
   homepage "https://www.builder.io/"
-  url "https://registry.npmjs.org/@builder.io/dev-tools/-/dev-tools-1.14.2.tgz"
-  sha256 "6f4d70f5c7d3c9f44700ea65c09d14d4cc12cd84bcf353c1e574d649be81d502"
+  url "https://registry.npmjs.org/@builder.io/dev-tools/-/dev-tools-1.14.3.tgz"
+  sha256 "ceb37547966fa80ba2d8075e82f7de0233a46015512008d207ebf19cc7d65f85"
 
   license "MIT"
 
